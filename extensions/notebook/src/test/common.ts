@@ -10,6 +10,11 @@ import { IServerInstance } from '../jupyter/common';
 import { Session, Kernel, KernelMessage, ServerConnection } from '@jupyterlab/services';
 import { ISignal } from '@phosphor/signaling';
 
+export const pythonKernelSpec: azdata.nb.IKernelSpec = {
+	name: 'python3',
+	display_name: 'Python 3'
+};
+
 export class JupyterServerInstanceStub implements IServerInstance {
 	public get port(): string {
 		return undefined;
