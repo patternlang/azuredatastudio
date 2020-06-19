@@ -149,9 +149,9 @@ export abstract class Modal extends Disposable implements IThemable {
 	 * @param options Modal options
 	 */
 	constructor(
-		private _title: string,
-		private _name: string,
-		private readonly _telemetryService: IAdsTelemetryService,
+		protected _title: string,
+		protected name: string,
+		protected readonly telemetryService: IAdsTelemetryService,
 		protected readonly layoutService: ILayoutService,
 		protected readonly _clipboardService: IClipboardService,
 		protected readonly _themeService: IThemeService,
@@ -380,8 +380,8 @@ export abstract class Modal extends Disposable implements IThemable {
 		}));
 
 		this.layout(DOM.getTotalHeight(this._modalBodySection));
-		this._telemetryService.createActionEvent(TelemetryKeys.TelemetryView.Shell, TelemetryKeys.ModalDialogOpened)
-			.withAdditionalProperties({ name: this._name })
+		this.telemetryService.createActionEvent(TelemetryKeys.TelemetryView.Shell, TelemetryKeys.ModalDialogOpened)
+			.withAdditionalProperties({ name: this.name, title: this._title })
 			.send();
 	}
 
@@ -397,8 +397,8 @@ export abstract class Modal extends Disposable implements IThemable {
 		this._modalShowingContext.get()!.pop();
 		this._bodyContainer.remove();
 		this.disposableStore.clear();
-		this._telemetryService.createActionEvent(TelemetryKeys.TelemetryView.Shell, TelemetryKeys.ModalDialogClosed)
-			.withAdditionalProperties({ name: this._name })
+		this.telemetryService.createActionEvent(TelemetryKeys.TelemetryView.Shell, TelemetryKeys.ModalDialogClosed)
+			.withAdditionalProperties({ name: this.name, title: this._title })
 			.send();
 		this.restoreKeyboardFocus();
 	}

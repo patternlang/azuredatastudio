@@ -27,6 +27,7 @@ import { onUnexpectedError } from 'vs/base/common/errors';
 import { attachModalDialogStyler } from 'sql/workbench/common/styler';
 import { ILayoutService } from 'vs/platform/layout/browser/layoutService';
 import { status } from 'vs/base/browser/ui/aria/aria';
+import * as TelemetryKeys from 'sql/platform/telemetry/common/telemetryKeys';
 
 export class WizardModal extends Modal {
 	private _dialogPanes = new Map<WizardPage, DialogPane>();
@@ -267,6 +268,9 @@ export class WizardModal extends Modal {
 			this._onDone.fire();
 			this.dispose();
 			this.hide();
+			this.telemetryService.createActionEvent(TelemetryKeys.TelemetryView.Shell, TelemetryKeys.TelemetryAction.Done)
+				.withAdditionalProperties({ name: this.name, title: this.title })
+				.send();
 		}
 	}
 
@@ -274,6 +278,9 @@ export class WizardModal extends Modal {
 		this._onCancel.fire();
 		this.dispose();
 		this.hide();
+		this.telemetryService.createActionEvent(TelemetryKeys.TelemetryView.Shell, TelemetryKeys.TelemetryAction.Cancel)
+			.withAdditionalProperties({ name: this.name, title: this.title })
+			.send();
 	}
 
 	private async validateNavigation(newPage: number): Promise<boolean> {

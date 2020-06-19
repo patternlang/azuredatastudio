@@ -70,6 +70,8 @@ export enum TelemetryView {
 
 export enum TelemetryAction {
 	Click = 'Click',
-	Open = 'Open'
+	Open = 'Open',
+	Done = 'Done',
+	Cancel = 'Cancel'
 }
 
