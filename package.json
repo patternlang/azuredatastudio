@@ -36,7 +36,7 @@
     "update-distro": "node build/npm/update-distro.js",
     "web": "node resources/serverless/code-web.js",
     "eslint": "eslint -c .eslintrc.json --rulesdir ./build/lib/eslint --ext .ts --ext .js ./src/vs ./extensions",
-    "sqllint": "eslint --no-eslintrc -c .eslintrc.sql.ts.json --rulesdir ./build/lib/eslint --ext .ts ./src/sql"
+    "sqllint": "eslint --no-eslintrc -c .eslintrc.sql.ts.json --rulesdir ./build/lib/eslint --ext .ts ./src/sql ./extensions/sql-database-projects"
   },
   "dependencies": {
     "@angular/animations": "~4.1.3",

@@ -1,5 +1,6 @@
 {
 	"include": [
-		"src/sql/**/*.ts"
+		"src/sql/**/*.ts",
+		"extensions/sql-database-projects/src/**/*.ts"
 	],
 }
