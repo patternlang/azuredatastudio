@@ -37,9 +37,9 @@ export class SqlToolsServer {
 	public async start(context: AppContext): Promise<SqlOpsDataClient> {
 		try {
 			const installationStart = Date.now();
-			const path = await this.download(context);
+			const p = await this.download(context);
 			const installationComplete = Date.now();
-			let serverOptions = generateServerOptions(context.extensionContext.logPath, path);
+			let serverOptions = generateServerOptions(path.dirname(context.extensionContext.logPath), p);
 			let clientOptions = getClientOptions(context);
 			this.client = new SqlOpsDataClient(Constants.serviceName, serverOptions, clientOptions);
 			const processStart = Date.now();
