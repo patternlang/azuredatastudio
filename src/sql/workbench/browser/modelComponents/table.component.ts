@@ -127,7 +127,7 @@ export default class TableComponent extends ComponentBase implements IComponent,
 						object[columnName] = val;
 					});
 				}
-				if (object['__id__'] === undefined) {
+				if (generateId && object['__id__'] === undefined) {
 					object.__id__ = generateUuid();
 				}
 				return object;
