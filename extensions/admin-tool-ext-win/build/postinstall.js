@@ -36,7 +36,7 @@
 		assert(stat);
 	}
 
-	await installService();
+	//await installService();
 })().catch(e => {
 	console.error(e);
 	process.exit(1);
