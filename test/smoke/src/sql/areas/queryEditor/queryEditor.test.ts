@@ -34,6 +34,7 @@ export function setupWeb() {
 		await app.workbench.connectionDialog.waitForConnectionDialog();
 		await app.workbench.connectionDialog.setProvider('Sqlite');
 		await app.workbench.connectionDialog.setTarget('File', 'chinook.db');
+		await app.captureScreenshot('before_connect.png');
 		await app.workbench.connectionDialog.connect();
 		await app.workbench.queryEditor.commandBar.run();
 		await app.workbench.queryEditor.waitForResults();
