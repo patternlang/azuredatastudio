@@ -69,7 +69,7 @@ export class CodeComponent extends CellView implements OnInit, OnChanges {
 			// Refresh based on the cell magic (since this is kernel-dependent) and then update using notebook language
 			this.checkForLanguageMagics();
 			this.updateLanguageMode();
-			this.removeDecorations();
+			this.removeOldDecorations();
 		}));
 		this._register(value.onValidConnectionSelected(() => {
 			this.updateConnectionState(this.isActive());
@@ -324,10 +324,9 @@ export class CodeComponent extends CellView implements OnInit, OnChanges {
 		}
 	}
 
-	private removeDecorations(): void {
-		if (this._editorModel && this._editor) {
-			this._editorModel.removeAllDecorationsWithOwnerId(0);
-		}
+	private removeOldDecorations(): void {
+		let oldDecorations = this._editorModel.getAllDecorations().map(decoration => decoration.id);
+		this._editorModel.deltaDecorations(oldDecorations, []);
 	}
 
 	private updateTheme(theme: IColorTheme): void {
