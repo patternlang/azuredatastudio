@@ -63,5 +63,10 @@
 	"resource-type-sql-azure-vm-display-name": "Azure SQL virtual machine",
 	"resoruce-type-sql-azure-vm-description": "Best for migrations and applications requiring OS-level access. Lift-and-shift ready.",
 	"publisher-display-name":"Publisher",
-	"sql-azure-vm-publisher-microsoft-sql-server": "MicrosoftSQLServer"
+	"sql-azure-vm-publisher-microsoft-sql-server": "MicrosoftSQLServer",
+	"sql-db-settings-title":"Deploy a single SQL database",
+	"azure-info-section-title": "Azure information",
+	"azure_subscription_id": "Subscription id",
+	"azure_resource_group": "Resource group",
+	"azure_location": "Location"
 }
